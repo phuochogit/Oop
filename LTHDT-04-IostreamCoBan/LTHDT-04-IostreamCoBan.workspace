@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="LTHDT-04-IostreamCoBan">
+		<Project filename="Datvande/Datvande.cbp" />
+		<Project filename="Ungdung/Ungdung.cbp" />
+		<Project filename="Baitapvenha/Baitapvenha.cbp" />
+		<Project filename="../LTHDT-05-ThietLap-PhaHuy/LTHDT-05-ThietLap-PhaHuy.cbp" />
+	</Workspace>
+</CodeBlocks_workspace_file>

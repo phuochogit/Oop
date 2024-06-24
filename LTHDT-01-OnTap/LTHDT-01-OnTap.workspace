@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="LTHDT-01-OnTap">
+		<Project filename="Truutuonghoadulieu/Truutuonghoadulieu.cbp" />
+		<Project filename="Ungdung1/Ungdung1.cbp" />
+		<Project filename="Bai1/Bai1.cbp" />
+		<Project filename="Bai3/Bai3.cbp" />
+		<Project filename="../LTHDT-01-OnTap-BaiTap/Bai1/Bai1.cbp" />
+	</Workspace>
+</CodeBlocks_workspace_file>

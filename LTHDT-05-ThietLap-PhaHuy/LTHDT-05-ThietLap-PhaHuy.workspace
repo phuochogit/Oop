@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="LTHDT-05-ThietLap-PhaHuy">
+		<Project filename="LTHDT-05-ThietLap-PhaHuy.cbp" />
+		<Project filename="Ungdung/Ungdung.cbp" />
+		<Project filename="Phahuy/Phahuy.cbp" />
+		<Project filename="Baitapvenha/Baitapvenha.cbp" />
+	</Workspace>
+</CodeBlocks_workspace_file>

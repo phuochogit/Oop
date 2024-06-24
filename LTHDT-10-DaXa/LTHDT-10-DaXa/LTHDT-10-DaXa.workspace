@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="LTHDT-10-DaXa">
+		<Project filename="LTHDT-10-DaXa.cbp" />
+		<Project filename="../Baitoantinhtienluong/Baitoantinhtienluong.cbp" />
+		<Project filename="../Baitoanchitietmay/Baitoanchitietmay.cbp" />
+		<Project filename="../Baitoanchitietmay1/Baitoanchitietmay1.cbp" />
+	</Workspace>
+</CodeBlocks_workspace_file>

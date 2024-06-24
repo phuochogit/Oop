@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="LTHDT-07-ToanTuSoHoc">
+		<Project filename="LTHDT-07-ToanTuSoHoc.cbp" />
+		<Project filename="../Datvande/Datvande.cbp" />
+		<Project filename="../Baitapvenha/Baitapvenha.cbp" />
+	</Workspace>
+</CodeBlocks_workspace_file>
