@@ -45,6 +45,7 @@ int main()
 //    abc.timkiemmotchitietmaytheomaso("1");
     cout << "Git" << endl;
     cout << "git from local to publish" << endl;
+    cout << "git from publish to local" << endl;
     return 0;
 }
 void may::nhap()
