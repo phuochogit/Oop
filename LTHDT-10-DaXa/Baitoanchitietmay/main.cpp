@@ -46,6 +46,7 @@ int main()
     cout << "Git" << endl;
     cout << "git from local to publish" << endl;
     cout << "git from publish to local" << endl;
+    cout << "git from publish to local 1" << endl;
     return 0;
 }
 void may::nhap()
