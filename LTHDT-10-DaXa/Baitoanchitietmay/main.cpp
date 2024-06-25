@@ -14,6 +14,7 @@ public:
     virtual void nhap();
     virtual chitiet* timkiemmotchitietmaytheomaso(const string);//Sử dụng dấu * chitiet* timkiemmotchitietmaytheomaso(). Vì ở dòng chitiet* kq = ct[i]->timkiemmotchitietmaytheomaso(maso); phương thức timkiemmotchitietmaytheomaso(maso) phải trả về một biến con trỏ (chitiet*) vì để gán cho biến kq cũng là một biến con trỏ (chitiet[kq]). Hai biến gán giá trị bằng nhau phải là hai biến có cùng kiểu dữ liệu. Ví dụ (int a = 5, int b = 0, a = b) là đúng vì có cùng kdl int. Trường hợp int *a = 5, int b = 0, a = b, sai vì 1 cái là địa chỉ ô nhớ a (0x1323ff) còn một cái là giá trị (b=0). Không thể gán địa chỉ = giá trị được, sẽ ra lỗi invalid conversion from ‘int’ to ‘int*’ [-fpermissive].
     virtual int tinhtienchomay();
+    virtual void xuat();
 };
 class don:public chitiet
 {
@@ -21,6 +22,7 @@ public:
     void nhap();
     chitiet* timkiemmotchitietmaytheomaso(const string);
     int tinhtienchomay();
+    void xuat();
 };
 class phuc:public chitiet
 {
@@ -31,6 +33,7 @@ public:
     void nhap();
     chitiet* timkiemmotchitietmaytheomaso(const string);
     int tinhtienchomay();
+    void xuat();
 };
 class may
 {
@@ -41,13 +44,15 @@ public:
     void nhap();
     void timkiemmotchitietmaytheomaso(const string);
     void tinhtienchomay();
+    void xuat();
 };
 int main()
 {
     may abc;
     abc.nhap();
-    abc.timkiemmotchitietmaytheomaso("6");
+    abc.timkiemmotchitietmaytheomaso("1");
     abc.tinhtienchomay();
+    abc.xuat();
     return 0;
 }
 void may::nhap()
@@ -95,6 +100,11 @@ void may::tinhtienchomay()
         sum += ct[i]->tinhtienchomay();
     cout << "Tong tien cho may la: " << sum << endl;
 }
+void may::xuat()
+{
+    for (int i=0;i<n;i++)
+        ct[i]->xuat();
+}
 void chitiet::nhap()
 {
 
@@ -104,6 +114,10 @@ chitiet* chitiet::timkiemmotchitietmaytheomaso(const string ms)
 
 }
 int chitiet::tinhtienchomay()
+{
+
+}
+void chitiet::xuat()
 {
 
 }
@@ -123,6 +137,12 @@ chitiet* don::timkiemmotchitietmaytheomaso(const string ms)
 int don::tinhtienchomay()
 {
     return giatien;
+}
+void don::xuat()
+{
+    cout << "Chi tiet don" << endl;
+    cout << "Ma so: " << maso << endl;
+    cout << "Gia tien: " << giatien << endl;
 }
 void phuc::nhap()
 {
@@ -168,4 +188,11 @@ int phuc::tinhtienchomay()
         giatien += danhsachchitietthanhphan[i]->tinhtienchomay();
     return giatien;
 }
-
+void phuc::xuat()
+{
+    cout << "Chi tiet phuc" << endl;
+    cout << "Ma so: " << maso << endl;
+    cout <<"So luong chi tiet thanh phan: " << soluongchitietthanhphan << endl;
+    for(int i=0;i<soluongchitietthanhphan;i++)
+        danhsachchitietthanhphan[i]->xuat();
+}
