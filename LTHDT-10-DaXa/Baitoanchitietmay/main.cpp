@@ -13,12 +13,14 @@ protected:
 public:
     virtual void nhap();
     virtual chitiet* timkiemmotchitietmaytheomaso(const string);//Sử dụng dấu * chitiet* timkiemmotchitietmaytheomaso(). Vì ở dòng chitiet* kq = ct[i]->timkiemmotchitietmaytheomaso(maso); phương thức timkiemmotchitietmaytheomaso(maso) phải trả về một biến con trỏ (chitiet*) vì để gán cho biến kq cũng là một biến con trỏ (chitiet[kq]). Hai biến gán giá trị bằng nhau phải là hai biến có cùng kiểu dữ liệu. Ví dụ (int a = 5, int b = 0, a = b) là đúng vì có cùng kdl int. Trường hợp int *a = 5, int b = 0, a = b, sai vì 1 cái là địa chỉ ô nhớ a (0x1323ff) còn một cái là giá trị (b=0). Không thể gán địa chỉ = giá trị được, sẽ ra lỗi invalid conversion from ‘int’ to ‘int*’ [-fpermissive].
+    virtual int tinhtienchomay();
 };
 class don:public chitiet
 {
 public:
     void nhap();
     chitiet* timkiemmotchitietmaytheomaso(const string);
+    int tinhtienchomay();
 };
 class phuc:public chitiet
 {
@@ -28,6 +30,7 @@ private:
 public:
     void nhap();
     chitiet* timkiemmotchitietmaytheomaso(const string);
+    int tinhtienchomay();
 };
 class may
 {
@@ -37,29 +40,14 @@ private:
 public:
     void nhap();
     void timkiemmotchitietmaytheomaso(const string);
+    void tinhtienchomay();
 };
 int main()
 {
     may abc;
-//    abc.nhap();
-//    abc.timkiemmotchitietmaytheomaso("1");
-    cout << "Git" << endl;
-    cout << "git from local to publish" << endl;
-    cout << "git from publish to local" << endl;
-    cout << "git from publish to local 1" << endl;
-    cout << "git from publish to local 2" << endl;
-    cout << "git from publish to local 3" << endl;
-    cout << "git from publish to local 4" << endl;
-    cout << "git from publish to local 5" << endl;
-    cout << "git from publish to local 6" << endl;
-    cout << "git from publish to local 7" << endl;
-    cout << "git from publish to local 8" << endl;
-    cout << "git from publish to local 9" << endl;
-    cout << "git from publish to local 10" << endl;
-    cout << "git from publish to local 11" << endl;
-    cout << "git from publish to local 12" << endl;
-    cout << "git from publish to local 13" << endl;
-    cout << "git from publish to local 14" << endl;
+    abc.nhap();
+    abc.timkiemmotchitietmaytheomaso("6");
+    abc.tinhtienchomay();
     return 0;
 }
 void may::nhap()
@@ -92,18 +80,30 @@ void may::timkiemmotchitietmaytheomaso(const string ms)
     for (int i = 0;i < n; i++)
     {
         kq = ct[i]->timkiemmotchitietmaytheomaso(ms);//Ở đây dùng chitiet *kq vì hai lý do. Một, nếu dùng chitiet kq = ds[i].timkiem() thì chỉ gọi được phương thức timkiem() ở lớp cha (chitiet), không gọi được phương thức timkiem() ở lớp con(don,phuc), mặc dù ở lớp cha đã có từ khóa virtual. Ngược lại, nếu gọi chitiet* kq = ds[i]->timkiem(). Sẽ thực hiện hàm timkiem() được ở lớp cha và lớp con, với từ khóa virtual timkiem() ở lớp cha. Hai, vì ct[] là kiểu dữ liệu con trỏ(chitiet* ct[100]), nên để gán được cho biến kq, thì biến kq cũng phải thuộc kiểu dữ liệu con trỏ(chitiet* kq).
+        if (kq != NULL)
+            break;
     }
+    if (kq != NULL)
+        cout << "Tim thay chi tiet may" << endl;
     if(kq == NULL)
         cout << "Khong tim thay chi tiet may" << endl;
-    if(kq != NULL)
-        cout << "Tim thay chi tiet may" << endl;
-
+}
+void may::tinhtienchomay()
+{
+    int sum = 0;
+    for (int i = 0; i < n; i++)
+        sum += ct[i]->tinhtienchomay();
+    cout << "Tong tien cho may la: " << sum << endl;
 }
 void chitiet::nhap()
 {
 
 }
 chitiet* chitiet::timkiemmotchitietmaytheomaso(const string ms)
+{
+
+}
+int chitiet::tinhtienchomay()
 {
 
 }
@@ -119,6 +119,10 @@ chitiet* don::timkiemmotchitietmaytheomaso(const string ms)
     if(ms==maso)
         return this;//Trả về địa chỉ.
     return NULL;
+}
+int don::tinhtienchomay()
+{
+    return giatien;
 }
 void phuc::nhap()
 {
@@ -158,5 +162,10 @@ chitiet* phuc::timkiemmotchitietmaytheomaso(const string ms)
     }
     return NULL;
 }
-
+int phuc::tinhtienchomay()
+{
+    for(int i = 0;i<soluongchitietthanhphan;i++)
+        giatien += danhsachchitietthanhphan[i]->tinhtienchomay();
+    return giatien;
+}
 
