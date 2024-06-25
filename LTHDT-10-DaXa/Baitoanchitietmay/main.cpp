@@ -5,6 +5,7 @@ using namespace std;
 //- *this: trả về địa chỉ ô nhớ. Ví dụ &a = f0x15ff.
 //- Mối quan hệ giữa <*> và <virtual>. Vì nếu không sử dụng * thì sẽ mặc định là lấy lớp cha (chitiet). Nếu sử dụng * thì sẽ lấy lớp con (chitietdon, chitietphuc). Ví dụ: Chitiet kq = ds[i].Timkiem() thì sẽ gọi phương thức Timkiem() ở lớp cha, và phương thức Timkiem() của lớp con sẽ không được gọi ngay cả khi phương thức Timkiem() đã được khai báo là virtual trong lớp cha. Vì vậy cần dùng chitiet *kq = ds[i].Timkiem(). Lúc này ở lớp cha phương thức virtual Timkiem() thì sẽ thực hiện Timkiem() ở bên trong cả lớp con.
 //- C++: new don; Java: new don(). Java có constructor mặc định(new don()) vì trong c++ sẽ tự động tạo constructor mặc định khi tạo lớp, còn trong java phải tạo thủ công constructor mặc định khi tạo lớp. Đó là sự khác biệt về mặt cú pháp.
+int dem = 0;
 class chitiet
 {
 protected:
@@ -15,6 +16,7 @@ public:
     virtual chitiet* timkiemmotchitietmaytheomaso(const string);//Sử dụng dấu * chitiet* timkiemmotchitietmaytheomaso(). Vì ở dòng chitiet* kq = ct[i]->timkiemmotchitietmaytheomaso(maso); phương thức timkiemmotchitietmaytheomaso(maso) phải trả về một biến con trỏ (chitiet*) vì để gán cho biến kq cũng là một biến con trỏ (chitiet[kq]). Hai biến gán giá trị bằng nhau phải là hai biến có cùng kiểu dữ liệu. Ví dụ (int a = 5, int b = 0, a = b) là đúng vì có cùng kdl int. Trường hợp int *a = 5, int b = 0, a = b, sai vì 1 cái là địa chỉ ô nhớ a (0x1323ff) còn một cái là giá trị (b=0). Không thể gán địa chỉ = giá trị được, sẽ ra lỗi invalid conversion from ‘int’ to ‘int*’ [-fpermissive].
     virtual int tinhtienchomay();
     virtual void xuat();
+    virtual void demsoluongchitietdoncotrongcaimay();
 };
 class don:public chitiet
 {
@@ -23,6 +25,7 @@ public:
     chitiet* timkiemmotchitietmaytheomaso(const string);
     int tinhtienchomay();
     void xuat();
+    void demsoluongchitietdoncotrongcaimay();
 };
 class phuc:public chitiet
 {
@@ -34,6 +37,7 @@ public:
     chitiet* timkiemmotchitietmaytheomaso(const string);
     int tinhtienchomay();
     void xuat();
+    void demsoluongchitietdoncotrongcaimay();
 };
 class may
 {
@@ -45,6 +49,7 @@ public:
     void timkiemmotchitietmaytheomaso(const string);
     void tinhtienchomay();
     void xuat();
+    void demsoluongchitietdoncotrongcaimay();
 };
 int main()
 {
@@ -53,6 +58,7 @@ int main()
     abc.timkiemmotchitietmaytheomaso("1");
     abc.tinhtienchomay();
     abc.xuat();
+    abc.demsoluongchitietdoncotrongcaimay();
     return 0;
 }
 void may::nhap()
@@ -105,6 +111,12 @@ void may::xuat()
     for (int i=0;i<n;i++)
         ct[i]->xuat();
 }
+void may::demsoluongchitietdoncotrongcaimay()
+{
+    for(int i=0;i<n;i++)
+        ct[i]->demsoluongchitietdoncotrongcaimay();
+    cout << "So luong chi tiet don co trong cai may la: " << dem << endl;
+}
 void chitiet::nhap()
 {
 
@@ -121,6 +133,7 @@ void chitiet::xuat()
 {
 
 }
+void chitiet::demsoluongchitietdoncotrongcaimay(){}
 void don::nhap()
 {
     cout << "Nhap ma so: ";
@@ -143,6 +156,10 @@ void don::xuat()
     cout << "Chi tiet don" << endl;
     cout << "Ma so: " << maso << endl;
     cout << "Gia tien: " << giatien << endl;
+}
+void don::demsoluongchitietdoncotrongcaimay()
+{
+    dem++;
 }
 void phuc::nhap()
 {
@@ -195,4 +212,9 @@ void phuc::xuat()
     cout <<"So luong chi tiet thanh phan: " << soluongchitietthanhphan << endl;
     for(int i=0;i<soluongchitietthanhphan;i++)
         danhsachchitietthanhphan[i]->xuat();
+}
+void phuc::demsoluongchitietdoncotrongcaimay()
+{
+    for(int i=0;i<soluongchitietthanhphan;i++)
+        danhsachchitietthanhphan[i]->demsoluongchitietdoncotrongcaimay();
 }
